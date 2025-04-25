@@ -11,10 +11,10 @@ import java.sql.SQLException;
 
 
 public class AccountDao {
-    Connection connection = ConnectionUtil.getConnection();
+    
     // Registration User story
     public Account getAccountByUsername(String username){
-        
+        Connection connection = ConnectionUtil.getConnection();
         Account account = null;
       
         try {
@@ -37,8 +37,7 @@ public class AccountDao {
     
     public Account createAccount (Account account){
         Account createdAccount = null;
-
-
+        Connection connection = ConnectionUtil.getConnection();
         try {
             String sql = "INSERT INTO account (username, password) VALUES (?,?)";
             PreparedStatement preparedStatement = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
@@ -64,6 +63,7 @@ public class AccountDao {
     // Login User Story
     public Account getAccountByCreds(String username, String password){
         Account account = null;
+        Connection connection = ConnectionUtil.getConnection();
 
         try{
             String sql = "SELECT * FROM account WHERE username = ? AND password = ?";
@@ -84,6 +84,7 @@ public class AccountDao {
     //Get account by id
     public Account getAccountById(int accountId){
         Account account = null;
+        Connection connection = ConnectionUtil.getConnection();
 
         try {
             String sql = "SELECT * FROM account WHERE account_id = ?";

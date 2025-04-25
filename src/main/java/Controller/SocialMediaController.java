@@ -30,7 +30,7 @@ public class SocialMediaController {
      * @return a Javalin app object which defines the behavior of the Javalin controller.
      */
     public Javalin startAPI() {
-        Javalin app = Javalin.create().start(8080);
+        Javalin app = Javalin.create();
         app.post("/register", this::registerHandler);
         app.post("/login", this::loginHandler);
         app.post("/messages", this::createMessageHandler);
